@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>YourBrand Collaboration</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Background Floating Effects -->
+  <div class="floating-bg">
+    <div class="circle"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+  </div>
+
+  <div class="loader-container" id="loader">
+    <div class="loader"></div>
+  </div>
+
+  <main class="glass" id="mainContent" style="display:none;">
+    <h1><i class="fas fa-gem"></i> YourBrand Influencer Program</h1>
+    <p>Join our premium fashion campaign. Fill the form, agree to our terms, choose 8 favorite items from our <a href="https://www.instagram.com/YOUR_SHOP_LINK" target="_blank">Instagram Shop</a>, and we’ll send your exclusive package.</p>
+
+    <form id="collabForm">
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Full Name" required />
+        <input type="email" name="email" placeholder="Email Address" required />
+        <input type="text" name="insta" placeholder="Instagram Handle" required />
+        <input type="text" name="phone" placeholder="Phone Number" required />
+        <textarea name="address" placeholder="Full Delivery Address" required></textarea>
+      </div>
+
+      <h3>Paste 8 Product Links</h3>
+      <div class="form-group" id="links">
+        <input type="url" name="link1" placeholder="Product Link 1" required />
+        <input type="url" name="link2" placeholder="Product Link 2" required />
+        <input type="url" name="link3" placeholder="Product Link 3" required />
+        <input type="url" name="link4" placeholder="Product Link 4" required />
+        <input type="url" name="link5" placeholder="Product Link 5" required />
+        <input type="url" name="link6" placeholder="Product Link 6" required />
+        <input type="url" name="link7" placeholder="Product Link 7" required />
+        <input type="url" name="link8" placeholder="Product Link 8" required />
+      </div>
+
+      <label class="terms">
+        <input type="checkbox" id="agree" required>
+        I agree to the <a href="terms.pdf" target="_blank">Collaboration Terms & Conditions</a>
+      </label>
+
+      <button type="submit" class="btn-glow">Submit & Generate PDF</button>
+    </form>
+
+    <div id="success" style="display:none;">
+      <h3>✅ You're In!</h3>
+      <p>Your collaboration PDF is ready. Please send it to us via:</p>
+      <div class="contact-icons">
+        <a href="#" id="whatsappLink" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="#" id="emailLink"><i class="fas fa-envelope"></i> Email</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
