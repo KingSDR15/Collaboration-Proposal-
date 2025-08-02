@@ -97,10 +97,10 @@ document.addEventListener("DOMContentLoaded", () => {
     doc.text("Invoice Summary", 20, y); y += lineHeight;
     doc.setFont("helvetica", "normal");
     doc.text("Items Provided (8): $0", 25, y); y += lineHeight;
-    doc.text("Delivery Fee (Risk Management): $200", 25, y); y += lineHeight;
+    doc.text("Delivery Fee (Risk Management): $300", 25, y); y += lineHeight;
     doc.text("------------------------------------------------------", 25, y); y += lineHeight;
     doc.setFont("helvetica", "bold");
-    doc.text("Total Payable: $200", 25, y); y += lineHeight * 2;
+    doc.text("Total Payable: $300", 25, y); y += lineHeight * 2;
 
     doc.setFontSize(10);
     doc.setFont("helvetica", "italic");
