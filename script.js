@@ -97,10 +97,10 @@ document.addEventListener("DOMContentLoaded", () => {
     doc.text("Invoice Summary", 20, y); y += lineHeight;
     doc.setFont("helvetica", "normal");
     doc.text("Items Provided (8): $0", 25, y); y += lineHeight;
-    doc.text("Delivery Fee (Risk Management): $300", 25, y); y += lineHeight;
+    doc.text("Delivery Fee (Risk Management): $200", 25, y); y += lineHeight;
     doc.text("------------------------------------------------------", 25, y); y += lineHeight;
     doc.setFont("helvetica", "bold");
-    doc.text("Total Payable: $300", 25, y); y += lineHeight * 2;
+    doc.text("Total Payable: $200", 25, y); y += lineHeight * 2;
 
     doc.setFontSize(10);
     doc.setFont("helvetica", "italic");
@@ -111,9 +111,16 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     const safeName = data.name.replace(/[^a-z0-9]/gi, "_").toLowerCase();
-    doc.save(`collaboration_agreement_${safeName}.pdf`);
 
-    form.reset();
+    // Ensure download is complete before showing success UI
+    doc.save(`collaboration_agreement_${safeName}.pdf`, {
+      returnPromise: true
+    }).then(() => {
+      afterDownloadSuccess(data);
+    });
+  });
+
+  function afterDownloadSuccess(data) {
     document.getElementById("previewModal").style.display = "none";
     document.getElementById("collabForm").style.display = "none";
     document.getElementById("success").style.display = "block";
@@ -121,9 +128,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const message = encodeURIComponent(
       `Hi KOTN,\n\nMy name is ${data.name} and I have completed the collaboration form and downloaded the agreement. Please find my attachment below.`
     );
+
     document.getElementById("whatsappLink").href = `http://wa.me/15135692040?text=${message}`;
     document.getElementById("emailLink").href = `mailto:Officialcollaborationkotn@gmail.com?subject=Collaboration Submission from ${data.name}&body=${message}`;
-  });
+  }
 
   function readFileAsDataURL(file) {
     return new Promise((resolve) => {
